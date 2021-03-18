@@ -1,6 +1,6 @@
-export interface ConfigOptions {
+export interface CoreConfigOptions {
   path: string;
   environment?: string;
 }
 
-export type ConfigModuleOptions = ConfigOptions;
+export type CoreConfigModuleOptions = CoreConfigOptions;

@@ -2,14 +2,14 @@ import { Inject, Injectable } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
-import { CONFIG_OPTIONS } from './constants';
-import { ConfigOptions, EnvConfig } from './interfaces';
+import { CORE_CONFIG_OPTIONS } from './constants';
+import { CoreConfigOptions, EnvConfig } from './interfaces';
 
 @Injectable()
-export class ConfigService {
+export class CoreConfigService {
   private readonly envConfig: EnvConfig;
 
-  constructor(@Inject(CONFIG_OPTIONS) options: ConfigOptions) {
+  constructor(@Inject(CORE_CONFIG_OPTIONS) options: CoreConfigOptions) {
     const filePath = `${options.environment || ''}.env`;
     const envFilePath = path.resolve(process.cwd(), options.path, filePath);
     console.log('envFilePath', envFilePath);
