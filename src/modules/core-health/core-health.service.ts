@@ -14,7 +14,11 @@ export class CoreHealthService {
     private readonly http: HttpHealthIndicator,
     configService: CoreConfigService,
   ) {
-    console.log('CoreHealthService', configService.get('OTRO'));
+    console.log(
+      'CoreHealthService',
+      configService,
+      configService && configService.get('OTRO'),
+    );
   }
 
   healthCheck() {

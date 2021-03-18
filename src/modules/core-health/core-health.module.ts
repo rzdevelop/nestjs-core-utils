@@ -9,7 +9,7 @@ export class CoreHealthModule {
     return {
       module: CoreHealthModule,
       imports: [TerminusModule, CoreConfigModule],
-      providers: [CoreConfigService, CoreHealthService],
+      providers: [CoreHealthService],
       exports: [CoreHealthService],
     };
   }

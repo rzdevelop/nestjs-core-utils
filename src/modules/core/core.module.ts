@@ -1,6 +1,6 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { CoreModuleOptions } from './interfaces';
-import { CoreConfigModule } from '../core-config';
+import { CoreConfigModule, CoreConfigService } from '../core-config';
 import { CoreHealthModule } from '../core-health';
 
 @Module({})
@@ -12,7 +12,7 @@ export class CoreModule {
         CoreConfigModule.register(options.configOptions),
         CoreHealthModule.register(),
       ],
-      providers: [],
+      providers: [CoreConfigService],
       exports: [CoreConfigModule, CoreHealthModule],
     };
   }
