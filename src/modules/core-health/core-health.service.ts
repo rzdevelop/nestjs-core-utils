@@ -4,6 +4,7 @@ import {
   TypeOrmHealthIndicator,
   MemoryHealthIndicator,
 } from '@nestjs/terminus';
+import { CoreConfigService } from '../core-config';
 
 export class CoreHealthService {
   constructor(
@@ -11,7 +12,10 @@ export class CoreHealthService {
     private readonly memory: MemoryHealthIndicator,
     private readonly db: TypeOrmHealthIndicator,
     private readonly http: HttpHealthIndicator,
-  ) {}
+    private readonly configService: CoreConfigService,
+  ) {
+    console.log('CoreHealthService', configService.get('OTRO'));
+  }
 
   healthCheck() {
     return this.health.check([
