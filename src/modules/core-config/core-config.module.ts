@@ -2,6 +2,7 @@ import { DynamicModule, Module, Provider } from '@nestjs/common';
 import { CoreConfigService } from './core-config.service';
 import { CORE_CONFIG_OPTIONS } from './constants';
 import { CoreConfigModuleOptions } from './interfaces';
+import { CoreConfigHealthIndicator } from './core-config.health.indicator';
 
 @Module({})
 export class CoreConfigModule {
@@ -12,10 +13,9 @@ export class CoreConfigModule {
     };
 
     return {
-      global: true,
       module: CoreConfigModule,
-      providers: [optionProvider, CoreConfigService],
-      exports: [optionProvider, CoreConfigService],
+      providers: [optionProvider, CoreConfigService, CoreConfigHealthIndicator],
+      exports: [optionProvider, CoreConfigService, CoreConfigHealthIndicator],
     };
   }
 }

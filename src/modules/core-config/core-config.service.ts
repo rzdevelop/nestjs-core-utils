@@ -18,7 +18,7 @@ export class CoreConfigService {
     this.envConfig = dotenv.parse(fileContent);
   }
 
-  get(key: string): string {
+  get(key: string): string | undefined {
     return this.envConfig[key];
   }
 }

@@ -1,6 +1,10 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { CoreModuleOptions } from './interfaces';
-import { CoreConfigModule, CoreConfigService } from '../core-config';
+import {
+  CoreConfigModule,
+  CoreConfigService,
+  CoreConfigHealthIndicator,
+} from '../core-config';
 import { CoreHealthModule } from '../core-health';
 
 @Module({})
@@ -12,10 +16,13 @@ export class CoreModule {
         CoreConfigModule.register(options.configOptions),
         CoreHealthModule.register({
           imports: [CoreConfigModule],
-          inject: [CoreConfigService],
+          useFactory: (healthIndicator: CoreConfigHealthIndicator) => {
+            console.log('useFact', healthIndicator);
+            return [healthIndicator && healthIndicator.isHealthy('version')];
+          },
+          inject: [CoreConfigHealthIndicator],
         }),
       ],
-      providers: [CoreConfigService],
       exports: [CoreConfigModule, CoreHealthModule],
     };
   }

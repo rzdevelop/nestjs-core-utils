@@ -1,10 +1,12 @@
+import { Inject } from '@nestjs/common';
 import {
   HealthCheckService,
   HttpHealthIndicator,
   TypeOrmHealthIndicator,
   MemoryHealthIndicator,
+  HealthIndicatorResult,
 } from '@nestjs/terminus';
-import { CoreConfigService } from '../core-config';
+import { CORE_HEALTH_RESULTS } from './constants';
 
 export class CoreHealthService {
   constructor(
@@ -12,13 +14,10 @@ export class CoreHealthService {
     private readonly memory: MemoryHealthIndicator,
     private readonly db: TypeOrmHealthIndicator,
     private readonly http: HttpHealthIndicator,
-    configService: CoreConfigService,
+    @Inject(CORE_HEALTH_RESULTS)
+    options: (Promise<HealthIndicatorResult> | HealthIndicatorResult)[],
   ) {
-    console.log(
-      'CoreHealthService',
-      configService,
-      configService && configService.get('OTRO'),
-    );
+    console.log('options', options);
   }
 
   healthCheck() {
