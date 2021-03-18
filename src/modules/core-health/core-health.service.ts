@@ -1,23 +1,22 @@
-import { Inject } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import {
   HealthCheckService,
   HttpHealthIndicator,
   // TypeOrmHealthIndicator,
   MemoryHealthIndicator,
-  HealthIndicatorResult,
 } from '@nestjs/terminus';
-import { CORE_HEALTH_RESULTS } from './constants';
+import { CoreConfigHealthIndicator } from '../core-config';
 
+@Injectable()
 export class CoreHealthService {
   constructor(
     private readonly health: HealthCheckService,
     private readonly memory: MemoryHealthIndicator,
     // private readonly db: TypeOrmHealthIndicator,
     private readonly http: HttpHealthIndicator,
-    @Inject(CORE_HEALTH_RESULTS)
-    options: (Promise<HealthIndicatorResult> | HealthIndicatorResult)[],
+    private readonly configHealthIndicator: CoreConfigHealthIndicator,
   ) {
-    console.log('options', options);
+    Logger.log('Init', CoreHealthService.name);
   }
 
   healthCheck() {
@@ -26,6 +25,7 @@ export class CoreHealthService {
       async () => this.memory.checkRSS('memory_rss', 3000 * 1024 * 1024),
       // async () => await this.db.pingCheck('db', { timeout: 60000 }),
       async () => this.http.pingCheck('google', 'https://google.com'),
+      async () => this.configHealthIndicator.isHealthy('version'),
     ]);
   }
 }

@@ -1,3 +1,4 @@
+import { Injectable, Logger } from '@nestjs/common';
 import {
   HealthIndicator,
   HealthIndicatorResult,
@@ -5,10 +6,11 @@ import {
 } from '@nestjs/terminus';
 import { CoreConfigService } from './core-config.service';
 
+@Injectable()
 export class CoreConfigHealthIndicator extends HealthIndicator {
   constructor(private readonly configService: CoreConfigService) {
     super();
-    console.log('init CoreConfigHealthIndicator');
+    Logger.log('Init', CoreConfigHealthIndicator.name);
   }
 
   async isHealthy(key: string): Promise<HealthIndicatorResult> {
