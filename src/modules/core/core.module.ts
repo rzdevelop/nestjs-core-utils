@@ -10,7 +10,10 @@ export class CoreModule {
       module: CoreModule,
       imports: [
         CoreConfigModule.register(options.configOptions),
-        CoreHealthModule.register(),
+        CoreHealthModule.register({
+          imports: [CoreConfigModule],
+          inject: [CoreConfigService],
+        }),
       ],
       providers: [CoreConfigService],
       exports: [CoreConfigModule, CoreHealthModule],
