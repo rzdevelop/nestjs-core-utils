@@ -12,7 +12,7 @@ export class CoreHealthService {
     private readonly memory: MemoryHealthIndicator,
     private readonly db: TypeOrmHealthIndicator,
     private readonly http: HttpHealthIndicator,
-    private readonly configService: CoreConfigService,
+    configService: CoreConfigService,
   ) {
     console.log('CoreHealthService', configService.get('OTRO'));
   }
