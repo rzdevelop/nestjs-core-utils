@@ -12,6 +12,7 @@ export class CoreConfigModule {
     };
 
     return {
+      global: true,
       module: CoreConfigModule,
       providers: [optionProvider, CoreConfigService],
       exports: [optionProvider, CoreConfigService],
