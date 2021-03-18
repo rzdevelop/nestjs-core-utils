@@ -499,6 +499,14 @@
     tslib "2.1.0"
     uuid "8.3.2"
 
+"@nestjs/terminus@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/terminus/-/terminus-7.1.0.tgz#fa9666e903a405541fe431a709690b678a24d8cb"
+  integrity sha512-5C6ZpC7DU9HunPmRwYZVK/DiQaNjQfH/KiDMKBLzWTiVG5cVaV+II5eTr0cdhmaaJk58u54S/5eb7lGaK5MGHQ==
+  dependencies:
+    check-disk-space "2.1.0"
+    deprecate "^1.1.1"
+
 "@nestjs/testing@^7.0.0":
   version "7.6.14"
   resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.14.tgz#b1093250157a54fe6b27ec164bdbdc0d26dcd841"
@@ -1023,6 +1031,11 @@ chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+check-disk-space@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/check-disk-space/-/check-disk-space-2.1.0.tgz#2e77fe62f30d9676dc37a524ea2008f40c780295"
+  integrity sha512-f0nx9oJF/AVF8nhSYlF1EBvMNnO+CXyLwKhPvN1943iOMI9TWhQigLZm80jAf0wzQhwKkzA8XXjyvuVUeGGcVQ==
+
 ci-info@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
@@ -1251,6 +1264,11 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
+
+deprecate@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/deprecate/-/deprecate-1.1.1.tgz#4632e981fc815eeaf00be945a40359c0f8bf9913"
+  integrity sha512-ZGDXefq1xknT292LnorMY5s8UVU08/WKdzDZCUT6t9JzsiMSP4uzUhgpqugffNVcT5WC6wMBiSQ+LFjlv3v7iQ==
 
 detect-newline@^3.0.0:
   version "3.1.0"
